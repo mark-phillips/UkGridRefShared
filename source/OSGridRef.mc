@@ -3,12 +3,8 @@ using Toybox.System;
 
 class OSGridRef extends GridRef
 {
-    // Constants
-     var WGS84_AXIS = 6378137.0d;
-     var WGS84_ECCENTRIC = 0.00669438037928458d;
-     var OSGB_AXIS = 6377563.396d;
-     var OSGB_ECCENTRIC = 0.0066705397616d;
-    // Helmert transform parms:  https://en.wikipedia.org/wiki/Helmert_transformation
+  var OSGB_AXIS = 6377563.396d;
+  var OSGB_ECCENTRIC = 0.0066705397616d;
 //    var Helmert= {
 //        "xp" => -446.448d,
 //        "yp" =>  125.157d,
@@ -19,16 +15,6 @@ class OSGridRef extends GridRef
 //        "s" => 20.4894d,
 //        "h" => 1.0d
 //    };
-    var Helmert_xp = -446.448d;
-    var Helmert_yp =  125.157d;
-    var Helmert_zp =  -542.06d;
-    var Helmert_xr = -0.1502d;
-    var Helmert_yr = -0.247d;
-    var Helmert_zr = -0.8421d;
-    var Helmert_s = 20.4894d;
-    var Helmert_h = 1.0d;
-    var valid = false;
-    var alpha = ["A","B","C","D","E","F","G","H","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
   // Create grid ref from WSG84 lat /long
     function initialize(lat, lon, p )
@@ -36,6 +22,20 @@ class OSGridRef extends GridRef
         //
         // Initialise superclass
         GridRef.initialize(lat, lon, p );
+        // Constants
+        WGS84_AXIS = 6378137.0d;
+        WGS84_ECCENTRIC = 0.00669438037928458d;
+        // Helmert transform parms:  https://en.wikipedia.org/wiki/Helmert_transformation
+        Helmert_xp = -446.448d;
+        Helmert_yp =  125.157d;
+        Helmert_zp =  -542.06d;
+        Helmert_xr = -0.1502d;
+        Helmert_yr = -0.247d;
+        Helmert_zr = -0.8421d;
+        Helmert_s = 20.4894d;
+        Helmert_h = 1.0d;
+        valid = false;
+        alpha = ["A","B","C","D","E","F","G","H","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         //
         // Check we have a valid UK lat & long
         if (lon == null or lat == null
